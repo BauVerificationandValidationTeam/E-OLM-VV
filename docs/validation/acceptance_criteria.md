@@ -71,4 +71,4 @@
 ### AC-09 Admin Issue Book
 **Given** the admin is logged in  
 **When** the admin issues a book to a student  
-**Then** the system records the transaction successfully  
+**Then** the system records the transaction successfully
