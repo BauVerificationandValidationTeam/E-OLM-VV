@@ -3,7 +3,7 @@
 **Repository:** (paste repo link here)  
 **Course:** SEN4013 Software Verification and Validation  
 **Submission Date:** 16 January 2026  
-**Team:** (list names + GitHub usernames)
+**Team:** (BauVerificationandValidationTeam + E-OLM-VV)
 
 ---
 
