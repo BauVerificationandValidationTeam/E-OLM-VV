@@ -17,7 +17,7 @@ Short description of E-OLM (Django-based e-library system) and what it does.
 ### 1.3 Team Responsibilities
 | Member | GitHub | Responsibilities |
 |---|---|---|
-| Emin | @... | Intro + Part 1 tools + report structure + coordination |
+| Emin | @21Emin17 | Intro + Part 1 tools + report structure + coordination |
 | Selin | @... | Verification + CI/Security + structural results |
 | Samet | @... | Validation (3.1–3.5) OR other assigned items |
 | Aygül | @... | Incidents + recommendations |
