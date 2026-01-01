@@ -24,6 +24,34 @@
 ### 4.2 Test Strategy (Unit/Integration/E2E)
 ### 4.3 Structural Testing (Coverage/Mutation)
 ### 4.4 Lightweight Formal Model / Invariants (Optional)
+#### 4.4 Lightweight Formal Model / Invariants (Optional)
+
+We model the **Borrow/Return** behavior with a lightweight state machine and a set of invariants.
+This helps us reason about correctness and define test oracles.
+
+**State machine (per book copy / loan):**
+- **Available** → (borrow) → **Borrowed**
+- **Borrowed** → (return) → **Available**
+
+**Transitions (pre/post conditions):**
+- **borrow(user, bookCopy)**
+  - Pre: bookCopy is Available, `availableCopies > 0`
+  - Post: create an active Loan record, `availableCopies := availableCopies - 1`, state becomes Borrowed
+- **return(user, bookCopy)**
+  - Pre: bookCopy is Borrowed, there exists an active Loan for that copy
+  - Post: close the Loan (set return date), `availableCopies := availableCopies + 1`, state becomes Available
+
+**Key invariants (must always hold):**
+1. **Non-negativity:** `availableCopies >= 0`
+2. **Upper bound:** `availableCopies <= totalCopies`
+3. **Conservation of copies:** `totalCopies = availableCopies + activeBorrowedCopies`
+4. **Uniqueness:** a book copy can have **at most one active loan** at any time
+5. **Valid timeline:** `borrowDate <= returnDate` (if returnDate exists)
+
+**How we verify in tests:**
+- After borrow/return operations, assert invariants #1–#3.
+- En
+
 
 ## 5. Test Results - Aygül
 ### 5.1 Functional Test Cases (EP/BVA/Decision Table/State)
