@@ -161,17 +161,23 @@ Transitions:
 #### Environment
 - OS: macOS
 - Python: 3.9.6
-- Run type: local (venv)
+- Run type: Local (venv)
 
 #### Coverage results
-**Tool:** coverage.py
-
-**Commands:**
+**Tool:** coverage.py  
+**Command:**
 ```bash
-python -m pip install coverage
-python -m coverage run --source=library manage.py test -v 2
-python -m coverage report -m
-python -m coverage report -m > evidence/5.2_coverage_report.txt
+pip install coverage
+coverage run --source=. manage.py test -v 2
+coverage report -m
+**Result (summary):**
+- Total coverage: **52%** (TOTAL: 342 statements, 164 missed)
+- Notable low coverage:
+  - `library/views.py` → **17%**
+  - `library/models.py` → **88%**
+
+**Evidence:** [evidence/5.2_coverage_report.txt](evidence/5.2_coverage_report.txt)
+
 
 ### 5.3 Defects Found (List + severity + status)
 
