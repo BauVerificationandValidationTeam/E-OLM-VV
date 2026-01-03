@@ -140,6 +140,23 @@ Transitions:
 
 ## 5. Test Results - Aygül
 ### 5.1 Functional Test Cases (EP/BVA/Decision Table/State)
+
+**Scope:** Authentication (register/login), search/filter, borrow/return workflows, basic CRUD where available.  
+**Techniques used:** Equivalence Partitioning (EP), Boundary Value Analysis (BVA), Decision Table Testing, State-based Testing.  
+**ID format:** TC-5.1-XX
+
+| ID | Feature | Technique | Preconditions | Test Data / Input | Steps | Expected Result |
+|---|---|---|---|---|---|---|
+| TC-5.1-01 | Register | EP | User not registered | valid email, valid password | Open Register → fill form → submit | Account created, user redirected / success message |
+| TC-5.1-02 | Register | EP | — | invalid email format (e.g., `abc@`) | Register → submit | Validation error shown, user not created |
+| TC-5.1-03 | Register | EP | Email already exists | existing email + any password | Register → submit | Error shown: email already used (no duplicate user) |
+| TC-5.1-04 | Login | EP | User exists | valid email + valid password | Login → submit | Login success, dashboard/home displayed |
+| TC-5.1-05 | Login | EP | User exists | valid email + wrong password | Login → submit | Login fails, error shown, session not created |
+
+| TC-5.1-06 | Search books | EP | At least 1 book exists | keyword that matches (e.g., "python") | Search → enter keyword → submit | Matching results listed |
+| TC-5.1-07 | Search books | EP | Books exist | keyword that matches none | Search → enter keyword → submit | “No results found” shown (no crash) |
+| TC-5.1-08 | Search books | BVA | Books exist | empty query `""` | Search → submit empty | Either show all / show validation (system-defined), but no e
+
 ### 5.2 Structural Results (Coverage, Mutation)
 ### 5.3 Defects Found (List + severity + status)
 
