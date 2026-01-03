@@ -158,6 +158,21 @@ Transitions:
 | TC-5.1-08 | Search books | BVA | Books exist | empty query `""` | Search → submit empty | Either show all / show validation (system-defined), but no e
 
 ### 5.2 Structural Results (Coverage, Mutation)
+#### Environment
+- OS: macOS
+- Python: 3.9.6
+- Run type: local (venv)
+
+#### Coverage results
+**Tool:** coverage.py
+
+**Commands:**
+```bash
+python -m pip install coverage
+python -m coverage run --source=library manage.py test -v 2
+python -m coverage report -m
+python -m coverage report -m > evidence/5.2_coverage_report.txt
+
 ### 5.3 Defects Found (List + severity + status)
 
 ## 6. Test Incidents - Aygül
