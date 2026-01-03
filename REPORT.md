@@ -105,6 +105,39 @@ A change is acceptable when:
 
 ### 4.4 Lightweight Formal Model / Invariants (Optional)
 
+We model the **Borrow/Return** behavior with a lightweight state machine and a set of invariants.  
+This helps us reason about correctness and defines clear **test oracles**.
+
+##### State machine (per book copy)
+States:
+- **Available**
+- **Borrowed**
+
+Transitions:
+- **borrow(copy)**: Available → Borrowed
+- **return(copy)**: Borrowed → Available
+
+##### Transition rules (pre/post conditions)
+- **borrow(user, copy)**
+  - Pre: copy is **Available**
+  - Post: an active loan is created for (user, copy), and copy becomes **Borrowed**
+
+- **return(user, copy)**
+  - Pre: copy is **Borrowed** and there exists an active loan for (user, copy)
+  - Post: the loan is closed (return date set), and copy becomes **Available**
+
+##### Key invariants (must always hold)
+1. **Non-negativity:** `availableCopies >= 0`
+2. **Upper bound:** `availableCopies <= totalCopies`
+3. **Conservation of copies:** `totalCopies = availableCopies + activeBorrowedCopies`
+4. **Uniqueness:** a book copy can have **at most one active loan** at any time
+5. **Valid timeline:** `borrowDate <= returnDate` (if returnDate exists)
+
+##### How we verify in tests (oracle)
+- After each borrow/return operation, assert invariants **(1)-(4)** on the updated state.
+- For returned loans, also assert invariant **(5)**.
+
+
 ## 5. Test Results - Aygül
 ### 5.1 Functional Test Cases (EP/BVA/Decision Table/State)
 ### 5.2 Structural Results (Coverage, Mutation)
