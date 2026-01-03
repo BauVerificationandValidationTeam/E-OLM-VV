@@ -1,0 +1,19 @@
+# 5.2 Coverage Report (local run)
+OS: macOS
+Python: 3.9.6
+Run type: Local (venv)
+
+Tool: coverage.py
+
+Commands:
+1) pip install coverage
+2) coverage run --source=. manage.py test -v 2
+3) coverage report -m
+
+Summary:
+TOTAL coverage: 52% (342 statements, 164 missed)
+
+Notable low-coverage modules:
+- library/views.py: 17% (179 stmts, 148 missed)
+- library/models.py: 88% (26 stmts, 3 missed)
+- manage.py: 82% (11 stmts, 2 missed)
