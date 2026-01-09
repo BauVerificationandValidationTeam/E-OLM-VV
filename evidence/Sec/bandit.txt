@@ -1,0 +1,42 @@
+Run started:2026-01-09 21:46:01.577585
+
+Test results:
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: '(*h%h-rc^kh_ob18is3j+c6@*3b92&9p^%s2lf^qas^lk3*n_q'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b105_hardcoded_password_string.html
+   Location: ./LibraryManagementSystem/settings.py:12:13
+11	# SECURITY WARNING: keep the secret key used in production secret!
+12	SECRET_KEY = '(*h%h-rc^kh_ob18is3j+c6@*3b92&9p^%s2lf^qas^lk3*n_q'
+13	
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html
+   Location: ./library/views.py:145:8
+144	                return render(request, "change_password.html", {'currpasswrong':currpasswrong})
+145	        except:
+146	            pass
+147	    return render(request, "change_password.html")
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 368
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 2
+		Medium: 0
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 1
+		High: 1
+Files skipped (0):
